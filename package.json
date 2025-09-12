@@ -26,7 +26,7 @@
   "author": "langgexyz",
   "license": "MIT",
   "dependencies": {
-    "openapi-ts-sdk": "file:../openapi-ts-sdk",
+    "openapi-ts-sdk": "https://github.com/langgexyz/openapi-ts-sdk.git#semver:^1.0.0",
     "gateway-ts-sdk": "file:../gateway-ts-sdk/gateway-ts-sdk-1.0.0.tgz"
   },
   "devDependencies": {
