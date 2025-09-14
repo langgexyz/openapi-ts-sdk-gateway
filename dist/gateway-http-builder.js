@@ -34,8 +34,8 @@ class GatewayHttpBuilder extends openapi_ts_sdk_1.HttpBuilder {
                             requestData = { data: this.content_ };
                         }
                     }
-                    // 使用 Gateway 客户端发送请求
-                    const result = await this.client.send('API/Proxy', requestData, String, proxyHeaders);
+                    // 使用 Gateway 客户端发送原始请求（避免 JSON 解析问题）
+                    const result = await this.client.sendRaw('API/Proxy', this.content_ || '{}', proxyHeaders);
                     return [result, null];
                 }
                 catch (error) {
