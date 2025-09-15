@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.HttpMethod = exports.StreamGatewayClient = exports.HeaderBuilder = void 0;
 // Gateway HTTP 实现
 __exportStar(require("./gateway-http-builder"), exports);
+__exportStar(require("./gateway-proxy-http-builder"), exports);
 // 重新导出 Gateway SDK 中的类型，方便使用
 var gateway_ts_sdk_1 = require("gateway-ts-sdk");
 Object.defineProperty(exports, "HeaderBuilder", { enumerable: true, get: function () { return gateway_ts_sdk_1.HeaderBuilder; } });

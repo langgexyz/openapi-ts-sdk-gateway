@@ -2,12 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GatewayHttpBuilder = void 0;
 const openapi_ts_sdk_1 = require("openapi-ts-sdk");
+const gateway_ts_sdk_1 = require("gateway-ts-sdk");
 /**
- * Gateway SDK HTTP Builder 实现
+ * Gateway 通用 HTTP Builder 实现
+ * 直接调用 Gateway 的 API 端点，不进行代理转发
  */
 class GatewayHttpBuilder extends openapi_ts_sdk_1.HttpBuilder {
-    constructor(url, client, headerBuilder) {
-        super(url);
+    constructor(baseUrl, client, headerBuilder = new gateway_ts_sdk_1.HeaderBuilder()) {
+        super(baseUrl);
         this.client = client;
         this.headerBuilder = headerBuilder;
     }
@@ -15,27 +17,16 @@ class GatewayHttpBuilder extends openapi_ts_sdk_1.HttpBuilder {
         return {
             send: async () => {
                 try {
-                    // 使用 Gateway SDK 的代理功能
-                    const proxyHeaders = this.headerBuilder
-                        .setProxy(`${this.baseUrl_}${this.uri_}`, this.method_)
-                        .build();
+                    // 从 HeaderBuilder 获取基础头部
+                    const headers = this.headerBuilder.build();
                     // 合并自定义头部
                     for (const [key, value] of this.headers_) {
-                        proxyHeaders.set(key, value);
+                        headers.set(key, value);
                     }
-                    // 准备请求数据
-                    let requestData = {};
-                    if (this.content_) {
-                        try {
-                            requestData = JSON.parse(this.content_);
-                        }
-                        catch {
-                            // 如果不是 JSON，包装为对象
-                            requestData = { data: this.content_ };
-                        }
-                    }
-                    // 使用 Gateway 客户端发送原始请求（避免 JSON 解析问题）
-                    const result = await this.client.sendRaw('API/Proxy', this.content_ || '{}', proxyHeaders);
+                    // 使用 this.uri_ 作为 API 端点
+                    const apiEndpoint = this.uri_ || '';
+                    // 使用 sendRaw 方法直接发送 content
+                    const result = await this.client.sendRaw(apiEndpoint, this.content_ || '{}', headers);
                     return [result, null];
                 }
                 catch (error) {
