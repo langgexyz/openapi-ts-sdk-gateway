@@ -23,10 +23,8 @@ class GatewayHttpBuilder extends openapi_ts_sdk_1.HttpBuilder {
                     for (const [key, value] of this.headers_) {
                         headers.set(key, value);
                     }
-                    // 使用 this.uri_ 作为 API 端点
-                    const apiEndpoint = this.uri_ || '';
                     // 使用 sendRaw 方法直接发送 content
-                    const result = await this.client.sendRaw(apiEndpoint, this.content_ || '{}', headers);
+                    const result = await this.client.sendRaw(this.uri_ || '', this.content_ || '{}', headers);
                     return [result, null];
                 }
                 catch (error) {

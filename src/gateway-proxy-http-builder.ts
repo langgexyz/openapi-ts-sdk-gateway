@@ -31,7 +31,7 @@ export class GatewayProxyHttpBuilder extends HttpBuilder {
 
           // 使用 sendRaw 方法直接发送 content
           const result = await this.client.sendRaw(
-            'API/Proxy',
+            `${this.client.getRootUri()}/Proxy`,
             this.content_ || '{}',
             proxyHeaders
           );

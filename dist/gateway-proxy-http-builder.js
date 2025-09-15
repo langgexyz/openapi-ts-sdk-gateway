@@ -26,7 +26,7 @@ class GatewayProxyHttpBuilder extends openapi_ts_sdk_1.HttpBuilder {
                         proxyHeaders.set(key, value);
                     }
                     // 使用 sendRaw 方法直接发送 content
-                    const result = await this.client.sendRaw('API/Proxy', this.content_ || '{}', proxyHeaders);
+                    const result = await this.client.sendRaw(`${this.client.getRootUri()}/Proxy`, this.content_ || '{}', proxyHeaders);
                     return [result, null];
                 }
                 catch (error) {

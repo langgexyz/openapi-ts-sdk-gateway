@@ -27,12 +27,9 @@ export class GatewayHttpBuilder extends HttpBuilder {
             headers.set(key, value);
           }
 
-          // 使用 this.uri_ 作为 API 端点
-          const apiEndpoint = this.uri_ || '';
-
           // 使用 sendRaw 方法直接发送 content
           const result = await this.client.sendRaw(
-            apiEndpoint,
+            this.uri_ || '',
             this.content_ || '{}',
             headers
           );
