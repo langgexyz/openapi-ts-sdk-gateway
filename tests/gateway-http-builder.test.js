@@ -1,7 +1,7 @@
 // Gateway HTTP Builder 单元测试
 const { GatewayHttpBuilder } = require('../dist/index');
 const { HttpMethod } = require('openapi-ts-sdk');
-const { HeaderBuilder, StreamGatewayClient: GatewayClient } = require('gateway-ts-sdk');
+const { HeaderBuilder, GatewayClient } = require('gateway-ts-sdk');
 
 console.log('=== Gateway HTTP Builder 测试 ===');
 

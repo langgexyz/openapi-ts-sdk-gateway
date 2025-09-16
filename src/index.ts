@@ -3,4 +3,4 @@ export * from './gateway-http-builder';
 export * from './gateway-proxy-http-builder';
 
 // 重新导出 Gateway SDK 中的类型，方便使用
-export { HeaderBuilder, StreamGatewayClient, HttpMethod } from 'gateway-ts-sdk';
+export { HeaderBuilder, GatewayClient, HttpMethod } from 'gateway-ts-sdk';

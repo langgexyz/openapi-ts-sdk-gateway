@@ -1,15 +1,15 @@
 import { HttpBuilder, Http } from 'openapi-ts-sdk';
-import { HeaderBuilder, StreamGatewayClient, HttpMethod } from 'gateway-ts-sdk';
+import { HeaderBuilder, GatewayClient, HttpMethod } from 'gateway-ts-sdk';
 
 /**
  * Gateway 代理 HTTP Builder 实现
  * 专门用于通过 Gateway 代理转发 HTTP 请求到外部服务
  */
 export class GatewayProxyHttpBuilder extends HttpBuilder {
-  private client: StreamGatewayClient;
+  private client: GatewayClient;
   private headerBuilder: HeaderBuilder;
 
-  constructor(url: string, client: StreamGatewayClient, headerBuilder: HeaderBuilder = new HeaderBuilder()) {
+  constructor(url: string, client: GatewayClient, headerBuilder: HeaderBuilder = new HeaderBuilder()) {
     super(url);
     this.client = client;
     this.headerBuilder = headerBuilder;

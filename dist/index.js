@@ -14,13 +14,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HttpMethod = exports.StreamGatewayClient = exports.HeaderBuilder = void 0;
+exports.HttpMethod = exports.GatewayClient = exports.HeaderBuilder = void 0;
 // Gateway HTTP 实现
 __exportStar(require("./gateway-http-builder"), exports);
 __exportStar(require("./gateway-proxy-http-builder"), exports);
 // 重新导出 Gateway SDK 中的类型，方便使用
 var gateway_ts_sdk_1 = require("gateway-ts-sdk");
 Object.defineProperty(exports, "HeaderBuilder", { enumerable: true, get: function () { return gateway_ts_sdk_1.HeaderBuilder; } });
-Object.defineProperty(exports, "StreamGatewayClient", { enumerable: true, get: function () { return gateway_ts_sdk_1.StreamGatewayClient; } });
+Object.defineProperty(exports, "GatewayClient", { enumerable: true, get: function () { return gateway_ts_sdk_1.GatewayClient; } });
 Object.defineProperty(exports, "HttpMethod", { enumerable: true, get: function () { return gateway_ts_sdk_1.HttpMethod; } });
 //# sourceMappingURL=index.js.map
